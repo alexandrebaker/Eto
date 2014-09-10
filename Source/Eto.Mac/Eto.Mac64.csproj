@@ -7,6 +7,8 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Eto.Mac</RootNamespace>
     <AssemblyName>Eto.Mac64</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
     <DefineConstants>$(DefineConstants);OSX;DESKTOP;MONOMAC;MAC64</DefineConstants>
@@ -21,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <DebugSymbols>true</DebugSymbols>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +34,7 @@
     <ConsolePause>false</ConsolePause>
     <DefineConstants>OSX;DESKTOP;MONOMAC;Mac64</DefineConstants>
     <DebugSymbols>true</DebugSymbols>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <OutputRoot>..\..\..</OutputRoot>
