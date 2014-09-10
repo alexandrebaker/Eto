@@ -93,8 +93,12 @@ namespace Eto.Test.Sections.Controls
 				var item = treeView.SelectedItem as TreeItem;
 				if (item != null)
 				{
-					item.Children.Add(new TreeItem { Text = "New Item " + newItemCount++ });
+					var newitem = new TreeItem { Text = "New Item " + newItemCount++ };
+					item.Children.Add(newitem);
 					treeView.RefreshItem(item);
+
+					treeView.SelectedItem = newitem;
+					treeView.RefreshData();
 				}
 			};
 			return control;

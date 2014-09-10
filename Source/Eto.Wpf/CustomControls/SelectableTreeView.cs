@@ -130,7 +130,7 @@ namespace Eto.Wpf.CustomControls
 			}
 			else
 			{
-				newValue = treeView.SelectedItem;
+				//newValue = treeView.SelectedItem;
 				SetCurrentItem(treeView, newValue);
 			}
 			treeView.SelectedItemChanged += TreeViewItemChanged;
