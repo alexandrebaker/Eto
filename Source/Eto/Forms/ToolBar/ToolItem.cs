@@ -21,7 +21,8 @@ namespace Eto.Forms
 		/// <param name="e">Event arguments.</param>
 		public void OnClick(EventArgs e)
 		{
-			if (Click != null) Click(this, e);
+			if (Click != null)
+				Click(this, e);
 		}
 
 		/// <summary>
@@ -40,6 +41,7 @@ namespace Eto.Forms
 			ID = command.ID;
 			Text = command.ToolBarText;
 			ToolTip = command.ToolTip;
+			Tag = command.Tag;
 			Image = command.Image;
 			Click += (sender, e) => command.Execute();
 			Enabled = command.Enabled;
@@ -61,6 +63,7 @@ namespace Eto.Forms
 			ID = command.ID;
 			Text = command.ToolBarText;
 			ToolTip = command.ToolTip;
+			Tag = command.Tag;
 			Image = command.Image;
 			Click += (sender, e) => command.Execute();
 			Enabled = command.Enabled;
