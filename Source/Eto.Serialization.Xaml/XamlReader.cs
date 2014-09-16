@@ -79,15 +79,15 @@ namespace Eto.Serialization.Xaml
 		/// <typeparam name="T">Type of object to load from the specified xaml</typeparam>
 		/// <param name="instance">Instance to use as the starting object</param>
 		/// <returns>A new or existing instance of the specified type with the contents loaded from the xaml stream</returns>
-		public static T Load<T> (T instance, AfterEndInitHandlerDelegate afterEndInitHandlerDelegate)
+		public static T Load<T> (T instance, AfterPropertiesHandlerDelegate afterPropertiesHandlerDelegate)
 			where T: Widget
 		{
 			var type = typeof(T);
 			var stream = type.Assembly.GetManifestResourceStream (type.FullName + ".xaml");
-			return Load<T> (stream, instance, afterEndInitHandlerDelegate);
+			return Load<T> (stream, instance, afterPropertiesHandlerDelegate);
 		}
 
-		public delegate void AfterEndInitHandlerDelegate (ref object instance);
+		public delegate void AfterPropertiesHandlerDelegate (ref object instance);
 
 		/// <summary>
 		/// Loads the specified type from the specified xaml stream
@@ -96,7 +96,7 @@ namespace Eto.Serialization.Xaml
 		/// <param name="stream">Xaml content to load (e.g. from resources)</param>
 		/// <param name="instance">Instance to use as the starting object</param>
 		/// <returns>A new or existing instance of the specified type with the contents loaded from the xaml stream</returns>
-		public static T Load<T> (Stream stream, T instance, AfterEndInitHandlerDelegate afterEndInitHandlerDelegate = null)
+		public static T Load<T> (Stream stream, T instance, AfterPropertiesHandlerDelegate afterPropertiesHandlerDelegate = null)
 			where T : Widget
 		{
 			var type = typeof(T);
@@ -106,12 +106,6 @@ namespace Eto.Serialization.Xaml
 				RootObjectInstance = instance
 			};
 
-			writerSettings.AfterBeginInitHandler += delegate (object sender, XamlObjectEventArgs e) {
-				if (afterEndInitHandlerDelegate != null) {
-					var obj = e.Instance;
-					afterEndInitHandlerDelegate (ref obj);
-				}
-			};
 			writerSettings.AfterPropertiesHandler += delegate (object sender, XamlObjectEventArgs e) {
 				var obj = e.Instance as Widget;
 				if (obj != null && !string.IsNullOrEmpty (obj.ID)) {
@@ -123,6 +117,10 @@ namespace Eto.Serialization.Xaml
 						if (field != null)
 							field.SetValue (instance, obj);
 					}
+				}
+				if (afterPropertiesHandlerDelegate != null) {
+					var objInstance = e.Instance;
+					afterPropertiesHandlerDelegate (ref objInstance);
 				}
 			};
 
