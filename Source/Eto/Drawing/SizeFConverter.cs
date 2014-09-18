@@ -36,17 +36,24 @@ namespace Eto.Drawing
 		{
 			var text = value as string;
 			if (text != null) {
-				var parts = text.Split (culture.TextInfo.ListSeparator.ToCharArray ());
+				var parts = text.Split (CultureInfo.InvariantCulture.TextInfo.ListSeparator.ToCharArray ());
 				if (parts.Length != 2)
 					throw new ArgumentException (string.Format (CultureInfo.CurrentCulture, "Cannot parse value '{0}' as size. Should be in the form of 'width,height'", text));
 
 				var converter = new SingleConverter ();
 				return new SizeF (
-					(float)converter.ConvertFromString (context, culture, parts [0]),
-					(float)converter.ConvertFromString (context, culture, parts [1])
+					(float)converter.ConvertFromString (context, CultureInfo.InvariantCulture, parts [0]),
+					(float)converter.ConvertFromString (context, CultureInfo.InvariantCulture, parts [1])
 				);
 			}
 			return base.ConvertFrom (context, culture, value);
+		}
+
+		public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType) {  
+			if (destinationType == typeof(string)) {
+				return ((SizeF)value).Width.ToString(CultureInfo.InvariantCulture) + "," + ((SizeF)value).Height.ToString(CultureInfo.InvariantCulture);
+			}
+			return base.ConvertTo(context, culture, value, destinationType);
 		}
 	}
 }

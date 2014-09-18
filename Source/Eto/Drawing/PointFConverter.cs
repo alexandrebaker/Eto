@@ -36,17 +36,24 @@ namespace Eto.Drawing
 		{
 			var text = value as string;
 			if (text != null) {
-				var parts = text.Split (culture.TextInfo.ListSeparator.ToCharArray ());
+				var parts = text.Split (CultureInfo.InvariantCulture.TextInfo.ListSeparator.ToCharArray ());
 				if (parts.Length != 2)
 					throw new ArgumentException (string.Format (CultureInfo.CurrentCulture, "Cannot parse value '{0}' as point.  Should be in the form of 'x,y'", text));
 
 				var converter = new SingleConverter ();
 				return new PointF (
-					(float)converter.ConvertFromString (context, culture, parts [0]),
-					(float)converter.ConvertFromString (context, culture, parts [1])
+					(float)converter.ConvertFromString (context, CultureInfo.InvariantCulture, parts [0]),
+					(float)converter.ConvertFromString (context, CultureInfo.InvariantCulture, parts [1])
 				);
 			}
 			return base.ConvertFrom (context, culture, value);
+		}
+
+		public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType) {  
+			if (destinationType == typeof(string)) {
+				return ((PointF)value).X.ToString(CultureInfo.InvariantCulture) + "," + ((PointF)value).Y.ToString(CultureInfo.InvariantCulture);
+			}
+			return base.ConvertTo(context, culture, value, destinationType);
 		}
 	}
 }
