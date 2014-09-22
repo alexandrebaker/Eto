@@ -220,6 +220,7 @@
     <Compile Include="..\Shared\EmbeddedAssemblyLoader.cs">
       <Link>EmbeddedAssemblyLoader.cs</Link>
     </Compile>
+    <Compile Include="Forms\Controls\MediaPlayerHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Libraries\WPFColorPicker\ColorPicker.dll">

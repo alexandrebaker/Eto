@@ -175,6 +175,7 @@
     <Compile Include="Commands\About.cs" />
     <Compile Include="Commands\Quit.cs" />
     <Compile Include="UnitTests\Drawing\TypeConvertersTests.cs" />
+    <Compile Include="Sections\Controls\MediaPlayerSection.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Eto.Serialization.Json\Eto.Serialization.Json.csproj">
