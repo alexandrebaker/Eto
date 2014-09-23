@@ -6,6 +6,7 @@
 bin/
 obj/
 /BuildOutput
+/Auto_BuildOutput
 *.shfbproj_*
 UpgradeLog*.htm
 Source/packages
