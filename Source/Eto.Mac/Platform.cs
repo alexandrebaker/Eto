@@ -121,6 +121,7 @@ namespace Eto.Mac
 			p.Add<TreeView.IHandler>(() => new TreeViewHandler());
 			p.Add<WebView.IHandler>(() => new WebViewHandler());
 			p.Add<Screen.IScreensHandler>(() => new ScreensHandler());
+			p.Add<MediaPlayer.IHandler>(() => new MediaPlayerHandler());
 			
 			// Forms.Menu
 			p.Add<CheckMenuItem.IHandler>(() => new CheckMenuItemHandler());
