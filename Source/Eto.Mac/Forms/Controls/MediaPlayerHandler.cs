@@ -152,7 +152,7 @@ namespace Eto.Mac.Forms.Controls
 				this.Stop();
 
 			this._state = MediaState.Closed;
-			Control.Movie = null;
+			Control.Movie = new QTMovie();
 		}
 
 		/// <summary>

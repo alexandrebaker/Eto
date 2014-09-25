@@ -13,6 +13,7 @@ namespace Eto.Test.Sections.Controls
 		Button pauseButton;
 		Button stopButton;
 		Button openButton;
+		Button closeButton;
 
 
 		public MediaPlayerSection()
@@ -43,6 +44,7 @@ namespace Eto.Test.Sections.Controls
 			layout.Add(PlayButton());
 			layout.Add(PauseButton());
 			layout.Add(StopButton());
+			layout.Add(CloseButton());
 			layout.Add(null);
 			layout.EndHorizontal();
 
@@ -107,6 +109,19 @@ namespace Eto.Test.Sections.Controls
 			{
 				if (player.Source != null)
 					player.Stop();
+			};
+			return control;
+		}
+		Control CloseButton()
+		{
+			var control = closeButton = new Button
+			{
+				Text = "Close"
+			};
+			control.Click += delegate
+			{
+				if (player.Source != null)
+					player.Close();
 			};
 			return control;
 		}
