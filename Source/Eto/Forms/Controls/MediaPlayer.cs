@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Eto.Forms
 {
@@ -40,26 +41,24 @@ namespace Eto.Forms
 		}
 
 		/// <summary>
-		/// Gets or sets the source.
+		/// Gets or sets the source blob.
 		/// </summary>
 		/// <value>The source.</value>
-		public byte[] Source
+		public byte[] SourceBlob
 		{
-			get
-			{
-				return Handler.Source;
-			}
+			get	{ return Handler.SourceBlob; }
+			set	{ Handler.SourceBlob = value; }
 		}
 
 		/// <summary>
-		/// Sets the source.
+		/// Gets or sets the source file.
 		/// </summary>
-		/// <param name="path">Path.</param>
-		public void SetSource(string path)
+		/// <value>The source.</value>
+		public string SourceFile
 		{
-			Handler.SetSource(path);
+			get	{ return Handler.SourceFile; }
+			set	{ Handler.SourceFile = value; }
 		}
-
 
 		/// <summary>
 		/// Play this media.
@@ -97,7 +96,7 @@ namespace Eto.Forms
 		/// Gets or sets a value indicating whether this <see cref="Eto.Forms.MediaPlayer"/> is visible.
 		/// </summary>
 		/// <value><c>true</c> if visible; otherwise, <c>false</c>.</value>
-		public bool Visible
+		public new bool Visible
 		{
 			get { return Handler.Visible; }
 
@@ -106,6 +105,7 @@ namespace Eto.Forms
 
 		EventHandler<EventArgs> mediaOpened;
 		EventHandler<EventArgs> mediaEnded;
+		DataReceivedEventHandler outputDataReceived;
 
 		/// <summary>
 		/// Event to handle when the media opened
@@ -123,6 +123,15 @@ namespace Eto.Forms
 		{
 			add { mediaEnded += value; }
 			remove { mediaEnded -= value; }
+		}
+
+		/// <summary>
+		/// Occurs when output data received.
+		/// </summary>
+		public event DataReceivedEventHandler OutputDataReceived
+		{
+			add { outputDataReceived += value; }
+			remove { outputDataReceived -= value; }
 		}
 
 		/// <summary>
@@ -146,15 +155,31 @@ namespace Eto.Forms
 		}
 
 		/// <summary>
+		/// Raises the output data received event.
+		/// </summary>
+		/// <param name="e">E.</param>
+		protected virtual void OnOutputDataReceived(DataReceivedEventArgs e)
+		{
+			if (outputDataReceived != null)
+				outputDataReceived(this, e);
+		}
+
+		/// <summary>
 		/// Handler interface for the <see cref="MediaPlayer"/> controls
 		/// </summary>
 		public new interface IHandler : CommonControl.IHandler
 		{
 			/// <summary>
-			/// Gets or sets the source.
+			/// Gets or sets the source blob.
 			/// </summary>
 			/// <value>The source.</value>
-			byte[] Source { get; }
+			byte[] SourceBlob { get; set; }
+
+			/// <summary>
+			/// Gets or sets the source file.
+			/// </summary>
+			/// <value>The source.</value>
+			string SourceFile { get; set; }
 
 			/// <summary>
 			/// Play this media.
@@ -177,12 +202,6 @@ namespace Eto.Forms
 			void Close();
 
 			/// <summary>
-			/// Set the source of the media.
-			/// </summary>
-			/// <param name="path"></param>
-			void SetSource(string path);
-
-			/// <summary>
 			/// Gets or sets a value indicating whether this <see cref="Eto.Forms.Control"/> is visible to the user.
 			/// </summary>
 			/// <remarks>
@@ -191,7 +210,7 @@ namespace Eto.Forms
 			/// of one of the panels is changed.
 			/// </remarks>
 			/// <value><c>true</c> if visible; otherwise, <c>false</c>.</value>
-			bool Visible { get; set; }
+			new bool Visible { get; set; }
 		}
 
 		static readonly object callback = new Callback();
@@ -223,6 +242,13 @@ namespace Eto.Forms
 			/// <param name="widget">Widget.</param>
 			/// <param name="e">E.</param>
 			void OnMediaEnded(MediaPlayer widget, EventArgs e);
+
+			/// <summary>
+			/// Outputs the data received.
+			/// </summary>
+			/// <param name="widget">Widget.</param>
+			/// <param name="e">EventArgs.</param>
+			void OutputDataReceived(MediaPlayer widget, DataReceivedEventArgs e);
 		}
 
 		/// <summary>
@@ -244,6 +270,16 @@ namespace Eto.Forms
 			public void OnMediaEnded(MediaPlayer widget, EventArgs e)
 			{
 				widget.Platform.Invoke(() => widget.OnMediaEnded(e));
+			}
+
+			/// <summary>
+			/// Outputs the data received.
+			/// </summary>
+			/// <param name="widget">Widget.</param>
+			/// <param name="e">EventArgs.</param>
+			public void OutputDataReceived(MediaPlayer widget, DataReceivedEventArgs e)
+			{
+				widget.Platform.Invoke(() => widget.OnOutputDataReceived(e));
 			}
 		}
 	}

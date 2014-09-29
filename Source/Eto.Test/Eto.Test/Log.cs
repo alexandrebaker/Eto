@@ -25,7 +25,7 @@ namespace Eto.Test
 				var eventLog = form.EventLog;
 				if (eventLog == null)
 					return;
-				eventLog.Append(sb.ToString(), true);
+				TestApplication.Instance.Invoke(() => eventLog.Append(sb.ToString(), true));
 			}
 			else
 			{
