@@ -62,10 +62,20 @@ namespace Eto.Drawing
 			return base.ConvertFrom(context, CultureInfo.InvariantCulture, value);
 		}
 
-		public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType) {  
-			if (destinationType == typeof(string)) {
+		/// <summary>
+		/// Converts the given value object to the specified type, using the specified context and culture information.
+		/// </summary>
+		/// <returns>The to.</returns>
+		/// <param name="context">Context.</param>
+		/// <param name="culture">Culture.</param>
+		/// <param name="value">Value.</param>
+		/// <param name="destinationType">Destination type.</param>
+		public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+		{  
+			if (destinationType == typeof(string))
+			{
 				return ((Padding)value).Left.ToString(CultureInfo.InvariantCulture) + "," + ((Padding)value).Top.ToString(CultureInfo.InvariantCulture)
-					+ "," + ((Padding)value).Right.ToString(CultureInfo.InvariantCulture) + "," + ((Padding)value).Bottom.ToString(CultureInfo.InvariantCulture);
+				+ "," + ((Padding)value).Right.ToString(CultureInfo.InvariantCulture) + "," + ((Padding)value).Bottom.ToString(CultureInfo.InvariantCulture);
 			}
 			return base.ConvertTo(context, culture, value, destinationType);
 		}
