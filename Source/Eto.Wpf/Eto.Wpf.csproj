@@ -237,8 +237,6 @@
     <Compile Include="Forms\Controls\MPlayer\MediaPlayerHandler.cs" />
     <Compile Include="Forms\Controls\MPlayer\MPlayerContext.cs" />
     <Compile Include="Forms\Controls\MPlayer\MPlayerWPFControl.cs" />
-    <Compile Include="Forms\Controls\MPlayer\MediaState.cs" />
-    <Compile Include="Forms\Controls\MPlayer\MPlayerContextExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Libraries\WPFColorPicker\ColorPicker.dll">

@@ -36,9 +36,13 @@ namespace Eto.Wpf.Forms
 		/// Gets or sets the state.
 		/// </summary>
 		/// <value>The state.</value>
-		internal MediaState State { get; set; }
+		public MediaState State { get; set; }
 
-		internal string MediaFile { get; set; }
+		/// <summary>
+		/// Gets or sets the media file.
+		/// </summary>
+		/// <value>The media file.</value>
+		public string MediaFile { get; set; }
 
 		private void SetMediaSize(object sender, sw.SizeChangedEventArgs e)
 		{

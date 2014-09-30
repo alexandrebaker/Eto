@@ -20,7 +20,22 @@ namespace Eto.Forms
 		/// <summary>
 		/// Alsa.
 		/// </summary>
-		Alsa
+		Alsa,
+
+		/// <summary>
+		/// Darwin/Mac OS X native audio output.
+		/// </summary>
+		MacCoreAudio,
+
+		/// <summary>
+		/// OpenAL audio output.
+		/// </summary>
+		OpenAL,
+
+		/// <summary>
+		/// MPEG-PES audio output
+		/// </summary>
+		MpegPES
 	}
 }
 

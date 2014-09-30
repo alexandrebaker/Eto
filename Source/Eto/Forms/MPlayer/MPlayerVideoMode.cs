@@ -21,11 +21,9 @@ namespace Eto.Forms
 			_displayModes = new Dictionary<MPlayerVideoModeName, MPlayerModeCommand>();
 			var modes = new[]
 			{
-				new MPlayerModeCommand(MPlayerVideoModeName.X11, "x11", new[] { PlatformID.Unix }),
-				new MPlayerModeCommand(MPlayerVideoModeName.Direct3D, "direct3d", new[] { PlatformID.Xbox, PlatformID.Win32NT, PlatformID.Win32Windows }),
-				new MPlayerModeCommand(MPlayerVideoModeName.DirectX, "directx", new[] { PlatformID.Xbox, PlatformID.Win32NT, PlatformID.Win32Windows }),
-				new MPlayerModeCommand(MPlayerVideoModeName.Gl, "gl", new[] { PlatformID.Unix, PlatformID.MacOSX, PlatformID.Win32NT, PlatformID.Win32Windows }),
-				new MPlayerModeCommand(MPlayerVideoModeName.Gl2, "gl2", new[] { PlatformID.Unix, PlatformID.MacOSX, PlatformID.Win32NT, PlatformID.Win32Windows }),
+				new MPlayerModeCommand(MPlayerVideoModeName.MacCoreVideo, "corevideo" , new [] { Eto.Platforms.Mac, Eto.Platforms.Mac64, Eto.Platforms.XamMac}),
+				new MPlayerModeCommand(MPlayerVideoModeName.Direct3D, "direct3d", new[] { Eto.Platforms.Wpf, Eto.Platforms.WinForms }),
+				new MPlayerModeCommand(MPlayerVideoModeName.DirectX, "directx", new[] { Eto.Platforms.Wpf, Eto.Platforms.WinForms }),
 			};
 
 			foreach (var mode in modes)
@@ -33,18 +31,11 @@ namespace Eto.Forms
 				_displayModes.Add(mode.VideoMode, mode);
 			}
 
-			switch (Environment.OSVersion.Platform)
-			{
-				case PlatformID.MacOSX:
-					_mode = MPlayerVideoModeName.Gl;
-					break;
-				case PlatformID.Unix:
-					_mode = MPlayerVideoModeName.X11;
-					break;
-				default:
-					_mode = MPlayerVideoModeName.Direct3D;
-					break;
-			}
+			if (Eto.Platform.Detect.IsMac)
+				_mode = MPlayerVideoModeName.MacCoreVideo;
+			else
+				_mode = MPlayerVideoModeName.Direct3D;
+
 		}
 
 		/// <summary>
@@ -68,11 +59,6 @@ namespace Eto.Forms
 		public MPlayerVideoModeName Mode
 		{
 			get { return _mode; }
-			set
-			{
-				if (_displayModes[value].Platroms.Contains(Environment.OSVersion.Platform))
-					_mode = value;
-			}
 		}
 	}
 }

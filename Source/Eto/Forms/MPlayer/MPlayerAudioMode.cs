@@ -21,28 +21,21 @@ namespace Eto.Forms
 			_displayModes = new Dictionary<MPlayerAudioModeName, MPlayerModeCommand>();
 			var modes = new[]
 			{
-				new MPlayerModeCommand(MPlayerAudioModeName.Alsa, "alsa", new[] { PlatformID.Unix }),
-				new MPlayerModeCommand(MPlayerAudioModeName.DirectSound, "dsound", new[] { PlatformID.Xbox, PlatformID.Win32NT, PlatformID.Win32Windows }),
-				new MPlayerModeCommand(MPlayerAudioModeName.Win32, "win32", new[] { PlatformID.Win32NT, PlatformID.Win32Windows }),
-			};
+				new MPlayerModeCommand(MPlayerAudioModeName.MacCoreAudio, "coreaudio" , new [] { Eto.Platforms.Mac, Eto.Platforms.Mac64, Eto.Platforms.XamMac}),
+				new MPlayerModeCommand(MPlayerAudioModeName.DirectSound, "dsound", new[] { Eto.Platforms.Wpf, Eto.Platforms.WinForms }),
+				new MPlayerModeCommand(MPlayerAudioModeName.Win32, "win32", new[] { Eto.Platforms.Wpf, Eto.Platforms.WinForms }),
+				};
 
 			foreach (var mode in modes)
 			{
 				_displayModes.Add(mode.AudioMode, mode);
 			}
 
-			switch (Environment.OSVersion.Platform)
-			{
-				case PlatformID.MacOSX:
-					_mode = MPlayerAudioModeName.Alsa;
-					break;
-				case PlatformID.Unix:
-					_mode = MPlayerAudioModeName.Alsa;
-					break;
-				default:
-					_mode = MPlayerAudioModeName.DirectSound;
-					break;
-			}
+			if(Eto.Platform.Instance.IsMac)
+				_mode = MPlayerAudioModeName.MacCoreAudio;
+			else 
+				_mode = MPlayerAudioModeName.DirectSound;
+
 		}
 
 		/// <summary>
@@ -66,11 +59,6 @@ namespace Eto.Forms
 		public MPlayerAudioModeName Mode
 		{
 			get { return _mode; }
-			set
-			{
-				if (_displayModes[value].Platroms.Contains(Environment.OSVersion.Platform))
-					_mode = value;
-			}
 		}
 	}
 }

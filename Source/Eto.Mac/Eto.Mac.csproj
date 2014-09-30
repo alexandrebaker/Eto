@@ -196,7 +196,8 @@
     <Compile Include="Forms\Controls\LinkButtonHandler.cs" />
     <Compile Include="Messaging.cs" />
     <Compile Include="Forms\Controls\MacLabel.cs" />
-    <Compile Include="Forms\Controls\MediaPlayerHandler.cs" />
+    <Compile Include="Forms\Controls\MPlayer\MPlayerContext.cs" />
+    <Compile Include="Forms\Controls\MPlayer\MediaPlayerHandler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
@@ -209,6 +210,30 @@
   <ItemGroup>
     <Content Include="..\..\Libraries\MonoMac\MonoMac-License.txt">
       <Link>MonoMac-License.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mplayer\mplayer">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mplayer\lib\libass.4.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mplayer\lib\libbs2b.0.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mplayer\lib\libenca.0.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mplayer\lib\libfontconfig.1.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mplayer\lib\libfreetype.6.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mplayer\lib\libfribidi.0.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mplayer\lib\libharfbuzz.0.dylib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -226,4 +251,9 @@
   </ProjectExtensions>
   <Import Project="$(ProjectDir)\..\.nuget\NuGet.targets" Condition="Exists('$(ProjectDir)\..\.nuget\NuGet.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets') And '0' == '1'" />
+  <ItemGroup>
+    <Folder Include="mplayer\" />
+    <Folder Include="mplayer\lib\" />
+    <Folder Include="Forms\Controls\MPlayer\" />
+  </ItemGroup>
 </Project>

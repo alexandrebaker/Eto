@@ -29,7 +29,7 @@ namespace Eto.Forms
 		/// <summary>
 		/// The platroms.
 		/// </summary>
-		internal List<PlatformID> Platroms = new List<PlatformID>();
+		internal List<string> Platroms = new List<string>();
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Eto.Forms.MPlayerModeCommand"/> class.
@@ -37,7 +37,7 @@ namespace Eto.Forms
 		/// <param name="mode">Mode.</param>
 		/// <param name="commandName">Command name.</param>
 		/// <param name="platformIds">Platform identifiers.</param>
-		public MPlayerModeCommand(MPlayerVideoModeName mode, string commandName, IEnumerable<PlatformID> platformIds)
+		public MPlayerModeCommand(MPlayerVideoModeName mode, string commandName, IEnumerable<string> platformIds)
 		{
 			VideoMode = mode;
 			Platroms.AddRange(platformIds);
@@ -50,7 +50,7 @@ namespace Eto.Forms
 		/// <param name="mode">Mode.</param>
 		/// <param name="commandName">Command name.</param>
 		/// <param name="platformIds">Platform identifiers.</param>
-		public MPlayerModeCommand(MPlayerAudioModeName mode, string commandName, IEnumerable<PlatformID> platformIds)
+		public MPlayerModeCommand(MPlayerAudioModeName mode, string commandName, IEnumerable<string> platformIds)
 		{
 			AudioMode = mode;
 			Platroms.AddRange(platformIds);

@@ -305,13 +305,15 @@
     <Compile Include="Forms\ControlBinding.cs" />
     <Compile Include="Forms\Layout\TableRow.cs" />
     <Compile Include="Forms\Layout\TableCell.cs" />
-    <Compile Include="Forms\Controls\MediaPlayer.cs" />
     <Compile Include="Forms\MPlayer\MPlayerAudioMode.cs" />
     <Compile Include="Forms\MPlayer\MPlayerVideoMode.cs" />
     <Compile Include="Forms\MPlayer\MPlayerAudioModeName.cs" />
     <Compile Include="Forms\MPlayer\MPlayerVideoModeName.cs" />
     <Compile Include="Forms\MPlayer\MPlayerModeCommand.cs" />
-    <Compile Include="Forms\MPlayer\IMPlayerContext.cs" />
+    <Compile Include="Forms\Controls\MPlayer\MediaState.cs" />
+    <Compile Include="Forms\Controls\MPlayer\MediaPlayer.cs" />
+    <Compile Include="Forms\Controls\MPlayer\MPlayerContextExtensions.cs" />
+    <Compile Include="Forms\MPlayer\MPlayerContextBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <PropertyGroup>
@@ -342,5 +344,6 @@
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets') And '0' == '1'" />
   <ItemGroup>
     <Folder Include="Forms\MPlayer\" />
+    <Folder Include="Forms\Controls\MPlayer\" />
   </ItemGroup>
 </Project>

@@ -30,7 +30,22 @@ namespace Eto.Forms
 		/// <summary>
 		/// GL2
 		/// </summary>
-		Gl2
+		Gl2,
+
+		/// <summary>
+		/// Mac OS X Core Video.
+		/// </summary>
+		MacCoreVideo,
+
+		/// <summary>
+		/// MPEG-PES file
+		/// </summary>
+		MpegPES,
+
+		/// <summary>
+		/// yuv4mpeg output for mjpegtools.
+		/// </summary>
+		Yuv4Mpeg
 	}
 }
 
