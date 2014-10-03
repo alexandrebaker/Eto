@@ -198,6 +198,8 @@
     <Compile Include="Forms\Controls\LinkButtonHandler.cs" />
     <Compile Include="Messaging.cs" />
     <Compile Include="Forms\Controls\MacLabel.cs" />
+	<Compile Include="Forms\Controls\MPlayer\MediaPlayerHandler.cs" />
+    <Compile Include="Forms\Controls\MPlayer\MPlayerContext.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
@@ -221,6 +223,20 @@
   </ProjectExtensions>
   <Import Project="$(ProjectDir)\..\.nuget\NuGet.targets" Condition="Exists('$(ProjectDir)\..\.nuget\NuGet.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets') And '0' == '1'" />
+  <ItemGroup>
+    <Folder Include="mplayer\" />
+    <Folder Include="Forms\Controls\MPlayer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mplayer\mplayer" />
+    <None Include="mplayer\lib\libass.4.dylib" />
+    <None Include="mplayer\lib\libbs2b.0.dylib" />
+    <None Include="mplayer\lib\libenca.0.dylib" />
+    <None Include="mplayer\lib\libfontconfig.1.dylib" />
+    <None Include="mplayer\lib\libfreetype.6.dylib" />
+    <None Include="mplayer\lib\libfribidi.0.dylib" />
+    <None Include="mplayer\lib\libharfbuzz.0.dylib" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Eto\Eto - Pcl.csproj">
       <Project>{35EF0A4E-2A1A-492C-8BED-106774EA09F2}</Project>
