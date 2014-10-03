@@ -195,6 +195,14 @@ namespace Eto.Wpf.Forms
 		/// </summary>
 		/// <value>The text font.</value>
 		public Font Font { get; set; }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (this.Context != null)
+                this.Context.CloseAll();
+
+            base.Dispose(disposing);
+        }
 	}
 }
 
