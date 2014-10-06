@@ -25,6 +25,7 @@
 	</metadata>
 	<files>
 		<file src="..\..\..\BuildOutput\$configuration$\Eto.Serialization.Xaml.dll" target="lib\net40\" />
+		<file src="..\..\..\BuildOutput\$configuration$\Eto.Serialization.Xaml.dll" target="lib\net45\" />
 		<file src="..\..\..\BuildOutput\$configuration$\LICENSE" target="LICENSE" />
 	</files>
 </package>
