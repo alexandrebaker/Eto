@@ -30,6 +30,6 @@
 	    <file src="..\..\..\BuildOutput\$configuration$\mplayer\dsnative.dll" target="content\mplayer\dsnative.dll" />
         <file src="..\..\..\BuildOutput\$configuration$\mplayer\mplayer.exe" target="content\mplayer\mplayer.exe" />
 		<file src="..\..\..\BuildOutput\$configuration$\Eto.Wpf.dll" target="lib\net40\" />
-		<file src="..\..\..\BuildOutput\$configuration$\LICENSE.txt" target="LICENSE.txt" />
+		<file src="..\..\..\BuildOutput\$configuration$\LICENSE" target="LICENSE" />
 	</files>
 </package>
