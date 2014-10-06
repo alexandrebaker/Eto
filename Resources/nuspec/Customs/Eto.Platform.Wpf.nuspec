@@ -20,9 +20,7 @@
 		<copyright>$copyright$</copyright>
 		<tags>cross platform gui ui framework desktop wpf eto.forms</tags>
 		<dependencies>
-			<group>
-				<dependency id="Eto.Forms" version="$version$" />
-			</group>
+			<dependency id="Eto.Forms" version="$version$" />
 			<dependency id="Extended.Wpf.Toolkit" version="2.1.0" />
 		</dependencies>
 	</metadata>
