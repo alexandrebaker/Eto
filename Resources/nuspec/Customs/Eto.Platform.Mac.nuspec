@@ -32,18 +32,18 @@
 		</dependencies>
 	</metadata>
 	<files>
-	    <file src="..\..\BuildOutput\$configuration$\mplayer\lib\libass.4.dylib" target="content\mplayer\lib\libass.4.dylib" />
-        <file src="..\..\BuildOutput\$configuration$\mplayer\lib\libbs2b.0.dylib" target="content\mplayer\lib\libbs2b.0.dylib" />
-        <file src="..\..\BuildOutput\$configuration$\mplayer\lib\libenca.0.dylib" target="content\mplayer\lib\libenca.0.dylib" />
-        <file src="..\..\BuildOutput\$configuration$\mplayer\lib\libfontconfig.1.dylib" target="content\mplayer\lib\libfontconfig.1.dylib" />
-        <file src="..\..\BuildOutput\$configuration$\mplayer\lib\libfreetype.6.dylib" target="content\mplayer\lib\libfreetype.6.dylib" />
-        <file src="..\..\BuildOutput\$configuration$\mplayer\lib\libfribidi.0.dylib" target="content\mplayer\lib\libfribidi.0.dylib" />
-        <file src="..\..\BuildOutput\$configuration$\mplayer\lib\libharfbuzz.0.dylib" target="content\mplayer\lib\libharfbuzz.0.dylib" />
-        <file src="..\..\BuildOutput\$configuration$\mplayer\mplayer" target="content\mplayer\mplayer" />
-		<file src="..\..\Libraries\MonoMac\MonoMac.dll" target="lib\net40\" />
-		<file src="..\..\Libraries\MonoMac\MonoMac.dll" target="lib\net45\" />
-		<file src="..\..\Libraries\MonoMac\MonoMac-License.txt" target="MonoMac-License.txt" />
-		<file src="..\..\BuildOutput\$configuration$\Eto.Mac.dll" target="lib\net40\" />
-		<file src="..\..\BuildOutput\$configuration$\LICENSE.txt" target="LICENSE.txt" />
+	    <file src="..\..\..\BuildOutput\$configuration$\mplayer\lib\libass.4.dylib" target="content\mplayer\lib\libass.4.dylib" />
+        <file src="..\..\..\BuildOutput\$configuration$\mplayer\lib\libbs2b.0.dylib" target="content\mplayer\lib\libbs2b.0.dylib" />
+        <file src="..\..\..\BuildOutput\$configuration$\mplayer\lib\libenca.0.dylib" target="content\mplayer\lib\libenca.0.dylib" />
+        <file src="..\..\..\BuildOutput\$configuration$\mplayer\lib\libfontconfig.1.dylib" target="content\mplayer\lib\libfontconfig.1.dylib" />
+        <file src="..\..\..\BuildOutput\$configuration$\mplayer\lib\libfreetype.6.dylib" target="content\mplayer\lib\libfreetype.6.dylib" />
+        <file src="..\..\..\BuildOutput\$configuration$\mplayer\lib\libfribidi.0.dylib" target="content\mplayer\lib\libfribidi.0.dylib" />
+        <file src="..\..\..\BuildOutput\$configuration$\mplayer\lib\libharfbuzz.0.dylib" target="content\mplayer\lib\libharfbuzz.0.dylib" />
+        <file src="..\..\..\BuildOutput\$configuration$\mplayer\mplayer" target="content\mplayer\mplayer" />
+		<file src="..\..\..\Libraries\MonoMac\MonoMac.dll" target="lib\net40\" />
+		<file src="..\..\..\Libraries\MonoMac\MonoMac.dll" target="lib\net45\" />
+		<file src="..\..\..\Libraries\MonoMac\MonoMac-License.txt" target="MonoMac-License.txt" />
+		<file src="..\..\..\BuildOutput\$configuration$\Eto.Mac.dll" target="lib\net40\" />
+		<file src="..\..\..\BuildOutput\$configuration$\LICENSE.txt" target="LICENSE.txt" />
 	</files>
 </package>
