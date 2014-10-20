@@ -81,6 +81,11 @@ namespace Eto.GtkSharp
 			}
 		}
 
+		public void RefreshItems()
+		{
+			// No implementation
+		}
+
 		public override void Focus()
 		{
 			Control.GrabFocus();

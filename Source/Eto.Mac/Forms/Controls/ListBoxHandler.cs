@@ -6,6 +6,7 @@ using Eto.Drawing;
 using Eto.Mac.Drawing;
 using System.Collections;
 using System.Linq;
+
 #if XAMMAC2
 using AppKit;
 using Foundation;
@@ -13,12 +14,15 @@ using CoreGraphics;
 using ObjCRuntime;
 using CoreAnimation;
 using nnint = System.Int32;
+
+
 #else
 using MonoMac.AppKit;
 using MonoMac.Foundation;
 using MonoMac.CoreGraphics;
 using MonoMac.ObjCRuntime;
 using MonoMac.CoreAnimation;
+
 #if Mac64
 using CGSize = MonoMac.Foundation.NSSize;
 using CGRect = MonoMac.Foundation.NSRect;
@@ -27,6 +31,8 @@ using nfloat = System.Double;
 using nint = System.Int64;
 using nuint = System.UInt64;
 using nnint = System.UInt64;
+
+
 #else
 using CGSize = System.Drawing.SizeF;
 using CGRect = System.Drawing.RectangleF;
@@ -180,6 +186,11 @@ namespace Eto.Mac.Forms.Controls
 			var handler = GetHandler(sender) as ListBoxHandler;
 			if (handler != null)
 				handler.Callback.OnActivated(handler.Widget, EventArgs.Empty);
+		}
+
+		public void RefreshItems()
+		{
+			this.Control.ReloadData();
 		}
 
 		public override Font Font

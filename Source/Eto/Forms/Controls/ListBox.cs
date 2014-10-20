@@ -77,7 +77,7 @@ namespace Eto.Forms
 		/// </summary>
 		/// <param name="generator">Generator.</param>
 		[Obsolete("Use default constructor instead")]
-		public ListBox (Generator generator) : this (generator, typeof(IHandler))
+		public ListBox(Generator generator) : this(generator, typeof(IHandler))
 		{
 		}
 
@@ -88,8 +88,8 @@ namespace Eto.Forms
 		/// <param name="type">Type.</param>
 		/// <param name="initialize">If set to <c>true</c> initialize.</param>
 		[Obsolete("Use default constructor and HandlerAttribute instead")]
-		protected ListBox (Generator generator, Type type, bool initialize = true)
-			: base (generator, type, initialize)
+		protected ListBox(Generator generator, Type type, bool initialize = true)
+			: base(generator, type, initialize)
 		{
 			ImageBinding = new ImageListItemImageBinding();
 		}
@@ -105,11 +105,15 @@ namespace Eto.Forms
 		}
 
 		static readonly object callback = new Callback();
+
 		/// <summary>
 		/// Gets an instance of an object used to perform callbacks to the widget from handler implementations
 		/// </summary>
 		/// <returns>The callback instance to use for this widget</returns>
-		protected override object GetCallback() { return callback; }
+		protected override object GetCallback()
+		{
+			return callback;
+		}
 
 		/// <summary>
 		/// Callback interface for the <see cref="ListBox"/>
@@ -137,10 +141,23 @@ namespace Eto.Forms
 		}
 
 		/// <summary>
+		/// Refreshs the items.
+		/// </summary>
+		public void RefreshItems()
+		{
+			Handler.RefreshItems();
+		}
+
+
+		/// <summary>
 		/// Handler interface for the <see cref="ListBox"/>
 		/// </summary>
 		public new interface IHandler : ListControl.IHandler, IContextMenuHost
 		{
+			/// <summary>
+			/// Refreshs the items.
+			/// </summary>
+			void RefreshItems();
 		}
 	}
 }

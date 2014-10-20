@@ -27,7 +27,7 @@ namespace Eto.Test.Sections.Controls
 		{
 			var control = new ListBox
 			{
-				Size = new Size (100, 150)
+				Size = new Size(100, 150)
 			};
 			LogEvents(control);
 
@@ -39,7 +39,7 @@ namespace Eto.Test.Sections.Controls
 			var layout = new DynamicLayout();
 			layout.Add(control);
 			layout.BeginVertical();
-			layout.AddRow(null, AddRowsButton(control), RemoveRowsButton(control), ClearButton(control), null);
+			layout.AddRow(null, AddRowsButton(control), RemoveRowsButton(control), ClearButton(control), EditButton(control));
 			layout.EndVertical();
 			
 			return layout;
@@ -77,6 +77,17 @@ namespace Eto.Test.Sections.Controls
 			return control;
 		}
 
+		Control EditButton(ListBox list)
+		{
+			var control = new Button { Text = "Edit" };
+			control.Click += delegate
+			{
+				list.Items[0].Text = "edit1";
+				list.RefreshItems();
+			};
+			return control;
+		}
+
 		class VirtualList : IListStore, IEnumerable<IListItem>
 		{
 			Icon image = TestIcons.TestIcon;
@@ -110,7 +121,7 @@ namespace Eto.Test.Sections.Controls
 		{
 			var control = new ListBox
 			{
-				Size = new Size (100, 150)
+				Size = new Size(100, 150)
 			};
 			LogEvents(control);
 			
@@ -122,7 +133,7 @@ namespace Eto.Test.Sections.Controls
 		{
 			var control = new ListBox
 			{
-				Size = new Size (100, 150)
+				Size = new Size(100, 150)
 			};
 			LogEvents(control);
 

@@ -45,8 +45,8 @@ namespace Eto.WinForms
 					{
 						var state = swf.DrawItemState.Default;
 						if ((SelectionMode == swf.SelectionMode.One && SelectedIndex == i)
-						|| (SelectionMode == swf.SelectionMode.MultiSimple && SelectedIndices.Contains(i))
-						|| (SelectionMode == swf.SelectionMode.MultiExtended && SelectedIndices.Contains(i)))
+						    || (SelectionMode == swf.SelectionMode.MultiSimple && SelectedIndices.Contains(i))
+						    || (SelectionMode == swf.SelectionMode.MultiExtended && SelectedIndices.Contains(i)))
 						{
 							state = swf.DrawItemState.Selected;
 						}
@@ -113,6 +113,11 @@ namespace Eto.WinForms
 				Callback.OnActivated(Widget, EventArgs.Empty);
 				e.Handled = true;
 			}
+		}
+
+		public void RefreshItems()
+		{
+			this.Control.Refresh();
 		}
 
 		class CollectionHandler : EnumerableChangedHandler<object>

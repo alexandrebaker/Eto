@@ -77,6 +77,11 @@ namespace Eto.Wpf.Forms.Controls
 
 		public override bool UseKeyPreview { get { return true; } }
 
+		public void RefreshItems()
+		{
+			this.Control.Items.Refresh();
+		}
+
 		public IEnumerable<object> DataStore
 		{
 			get { return store; }
