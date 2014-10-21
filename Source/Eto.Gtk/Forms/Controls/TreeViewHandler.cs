@@ -356,6 +356,11 @@ namespace Eto.GtkSharp.Forms
 			collection.ExpandItems();
 		}
 
+		public void RePaint()
+		{
+			this.RefreshData(); //TODO: put here GTK specific logic to refresh the UI if RefreshData() does not do it automatically
+		}
+
 		public void RefreshItem(ITreeItem item)
 		{
 			var path = model.GetPathFromItem(item);
@@ -378,6 +383,11 @@ namespace Eto.GtkSharp.Forms
 			}
 			else
 				RefreshData();
+		}
+
+		public void RePaintItem(ITreeItem item)
+		{
+			this.RefreshItem(item);  //TODO: put here GTK specific logic to refresh the UI if RefreshItem() does not do it automatically
 		}
 
 		public ITreeItem GetNodeAt(PointF point)

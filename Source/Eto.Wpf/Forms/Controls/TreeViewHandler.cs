@@ -372,6 +372,11 @@ namespace Eto.Wpf.Forms.Controls
 			Control.RefreshData();
 		}
 
+		public void RePaint()
+		{
+			this.RefreshData();
+		}
+
 		public void RefreshItem(ITreeItem item)
 		{
 			Control.FindTreeViewItem(item).ContinueWith(r =>
@@ -385,6 +390,10 @@ namespace Eto.Wpf.Forms.Controls
 				}, TaskScheduler.FromCurrentSynchronizationContext());
 		}
 
+		public void RePaintItem(ITreeItem item)
+		{
+			this.RefreshItem(item);
+		}
 
 		public ITreeItem GetNodeAt(PointF point)
 		{
