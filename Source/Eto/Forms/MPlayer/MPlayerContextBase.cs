@@ -41,29 +41,29 @@ namespace Eto.Forms
 		/// <summary>
 		/// Keep handle for a video output window
 		/// </summary>
-		protected int _windowHandle;
+		private int _windowHandle;
 
 		/// <summary>
 		/// Video mode keeper
 		/// </summary>
-		protected readonly MPlayerVideoMode videoMode;
+		private readonly MPlayerVideoMode _videoMode;
 
 		/// <summary>
 		/// Audio mode keeper
 		/// </summary>
-		protected readonly MPlayerAudioMode audioMode;
+		private readonly MPlayerAudioMode _audioMode;
 	
 		/// <summary>
 		/// Mplayer process
 		/// </summary>
-		protected Process _mplayer;
+		private Process _mplayer;
 
 		/// <summary>
 		/// Video mode
 		/// </summary>
 		public virtual MPlayerVideoModeName VideoMode 
 		{ 
-			get { return videoMode.Mode; }
+			get { return _videoMode.Mode; }
 		}
 
 		/// <summary>
@@ -71,7 +71,7 @@ namespace Eto.Forms
 		/// </summary>
 		public virtual MPlayerAudioModeName AudioMode
 		{ 
-			get { return audioMode.Mode; }
+			get { return _audioMode.Mode; }
 		}
 
 		/// <summary>
@@ -87,29 +87,34 @@ namespace Eto.Forms
 		/// <summary>
 		/// Whether we processing header output
 		/// </summary>
-		protected bool _isParsingHeader;
+		private bool _isParsingHeader;
 
 		/// <summary>
 		/// The output data received event.
 		/// </summary>
-		protected DataReceivedEventHandler outputDataReceived;
+		private DataReceivedEventHandler _outputDataReceived;
 
 		/// <summary>
 		/// Occurs when output data received.
 		/// </summary>
 		public event DataReceivedEventHandler OutputDataReceived
 		{
-			add { outputDataReceived += value; }
-			remove { outputDataReceived -= value; }
+			add { _outputDataReceived += value; }
+			remove { _outputDataReceived -= value; }
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Eto.Forms.MPlayerContextBase"/> class.
+		/// </summary>
+		/// <param name="mPlayerDirectory">Mplayer directory.</param>
+		/// <param name="mPlayerExe">Mplayer executable.</param>
 		protected MPlayerContextBase(string mPlayerDirectory, string mPlayerExe){
 			IsInitialized = false;
 			ExecutablePath = mPlayerDirectory;
 			ExecutableName = mPlayerExe;
 			Options = new StringCollection();
-			audioMode = new MPlayerAudioMode();
-			videoMode = new MPlayerVideoMode();
+			_audioMode = new MPlayerAudioMode();
+			_videoMode = new MPlayerVideoMode();
 			FileName = string.Empty;
 
 			ExpressionData = new Regex(
@@ -213,8 +218,8 @@ namespace Eto.Forms
 
 			var commandArguments = string.Format(
 				" -vo {0} -ao {1}",
-				videoMode.ModeCommand,
-				audioMode.ModeCommand);
+				_videoMode.ModeCommand,
+				_audioMode.ModeCommand);
 			commandArguments = Options.Cast<string>().Aggregate(
 				commandArguments,
 				(current, option) => current + string.Format(" -{0}", option));
@@ -278,8 +283,8 @@ namespace Eto.Forms
 			if (e == null || e.Data == null)
 				return;
 
-			if (this.outputDataReceived != null)
-				outputDataReceived(sender, e);
+			if (this._outputDataReceived != null)
+				_outputDataReceived(sender, e);
 
 			Match match;
 			Debug.WriteLine(e.Data);
@@ -303,6 +308,10 @@ namespace Eto.Forms
 			}
 		}
 
+		/// <summary>
+		/// Processes the progress.
+		/// </summary>
+		/// <param name="time">Time.</param>
 		public virtual void ProcessProgress(string time)
 		{
 
