@@ -394,29 +394,12 @@ namespace Eto.Forms
 		}
 
 		/// <summary>
-		/// Repaints the control.
-		/// </summary>
-		public void RePaint()
-		{
-			Handler.RePaint();
-		}
-
-		/// <summary>
 		/// Refreshes the specified item and all its children, keeping the selection if not part of the refreshed nodes
 		/// </summary>
 		/// <param name="item">Item to refresh</param>
 		public void RefreshItem(ITreeItem item)
 		{
 			Handler.RefreshItem(item);
-		}
-
-		/// <summary>
-		/// Repaints specified item.
-		/// </summary>
-		/// <param name="item">Item.</param>
-		public void RePaintItem(ITreeItem item)
-		{
-			Handler.RePaintItem(item);
 		}
 
 		/// <summary>

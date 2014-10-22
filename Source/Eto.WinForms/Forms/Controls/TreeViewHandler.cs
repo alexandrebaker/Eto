@@ -354,19 +354,6 @@ namespace Eto.WinForms.Forms.Controls
 			Control.EndUpdate();
 		}
 
-		#region Documentation
-		/// <summary>
-		/// Repaints the tree view.
-		/// </summary>
-		/// <remarks>The <see cref="RefreshData()"/> method does not allow to repaint the control in real time for performance issues. If performance is critical and changes are not required to propagade to the UI use RefreshData().</remarks>
-		#endregion
-		public void RePaint()
-		{
-			Control.ImageList = null;
-			images.Clear();
-			PopulateNodes(Control.Nodes, top);
-		}
-
 		public void RefreshItem(ITreeItem item)
 		{
 			var node = GetTreeNode(item);
@@ -392,33 +379,6 @@ namespace Eto.WinForms.Forms.Controls
 
 		}
 
-		#region Documentation
-		/// <summary>
-		/// Repaints a tree view item.
-		/// </summary>
-		/// <remarks>The <see cref="RefreshItem(ITreeItem item)"/> method does not allow to repaint the control in real time for performance issues. If performance is critical and changes are not required to propagade to the UI use RefreshItem.</remarks>
-		#endregion
-		public void RePaintItem(ITreeItem item)
-		{
-			var node = GetTreeNode(item);
-			if (node != null)
-			{
-				var selected = SelectedItem;
-				node.Text = item.Text;
-				SetImage(item, node);
-				PopulateNodes(node.Nodes, item);
-				if (node.IsExpanded != item.Expanded)
-				{
-					if (item.Expanded)
-						node.Expand();
-					else
-						node.Collapse();
-				}
-				SelectedItem = selected;
-			}
-			else
-				RePaint();
-		}
 	}
 }
 

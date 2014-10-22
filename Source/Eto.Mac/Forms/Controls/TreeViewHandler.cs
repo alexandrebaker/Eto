@@ -586,11 +586,6 @@ namespace Eto.Mac.Forms.Controls
 			selectionChanging = false;
 		}
 
-		public void RePaint()
-		{
-			this.RefreshData();  //TODO: put here MAC specific logic to refresh the UI if RefreshData() does not do it automatically
-		}
-
 		public void RefreshItem(ITreeItem item)
 		{
 			EtoTreeItem myitem;
@@ -606,11 +601,6 @@ namespace Eto.Mac.Forms.Controls
 			}
 			else
 				RefreshData();
-		}
-
-		public void RePaintItem(ITreeItem item)
-		{
-			this.RefreshItem(item); //TODO: put here MAC specific logic to refresh the UI if RefreshItem() does not do it automatically
 		}
 
 		public ITreeItem GetNodeAt(PointF point)
